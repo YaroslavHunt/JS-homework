@@ -10,10 +10,10 @@ strings.forEach((item) => console.log(item.toUpperCase()));
 strings.forEach((item) => console.log(item.toLowerCase()));
 // - Є "брудна" стрінга let str = ' dirty string   ' . Почистити її від зайвих пробілів.
 let str = ' dirty string   ';
-console.log(str.slice(1,13));
-// - Напишіть функцію stringToarray(str), яка перетворює рядок на масив слів.
+console.log(str.trim());
+// - Напишіть функцію stringToArray(str), яка перетворює рядок на масив слів.
 let str1 = 'Ревуть воли як ясла повні';
-// let arr = stringToarray(str); ['Ревуть', 'воли', 'як', 'ясла', 'повні']
+// let arr = stringToArray(str); ['Ревуть', 'воли', 'як', 'ясла', 'повні']
 const stringToArray = str => str.split(' ');
 console.log(stringToArray(str1));
 // - є масив чисел [10,8,-7,55,987,-1011,0,1050,0] . за допомоги map  перетворити всі об'єкти в масиві на стрінгові.
@@ -102,6 +102,22 @@ let cardDeck = [
     { cardSuit: 'clubs', value: 'king', color: 'black' },
     { cardSuit: 'clubs', value: 'ace', color: 'black' }
 ];
+// let cardSuits = ['spades', 'diamonds', 'hearts', 'clubs'];
+// let values = [6, 7, 8, 9, 10, 'jack', 'queen', 'king', 'ace'];
+//
+// let cardDeck = cardSuits.reduce((acc, card) => {
+//
+//     values.forEach(item => {
+//         let color = (card === 'diamonds' || card === 'hearts') ? 'red' : 'black';
+//         acc.push({
+//             cardSuit: item,
+//             value: card,
+//             color: color
+//         })
+//     })
+//     return acc;
+// }, [])
+// console.log(cardDeck);
 // - знайти піковий туз
 const aceOfSpades = cardDeck.filter(card => card.cardSuit === 'spade' && card.value === 'ace');
 console.log(aceOfSpades);
@@ -115,7 +131,8 @@ console.log(redCards);
 const diamonds = cardDeck.filter(card => card.cardSuit === 'diamond');
 console.log(diamonds);
 // - всі трефи від 9 та більше
-const highValueClubs = cardDeck.filter(card => card.cardSuit === 'clubs' && parseInt(card.value) >= 9);
+const highValueClubs = cardDeck.filter(card => card.cardSuit === 'clubs' && (parseInt(card.value) >= 9 ||
+    ['ace', 'jack', 'queen', 'king'].includes(card.value)));
 console.log(highValueClubs);
 //
 // {
