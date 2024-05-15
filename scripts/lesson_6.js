@@ -56,7 +56,7 @@ console.log(sorted);
 let filtered = coursesAndDurationArray.filter((course) => course.monthDuration > 5);
 console.log(filtered);
 // -- за допомоги map перетворити кожен елемент на наступний тип {id,title,monthDuration}
-let map = coursesAndDurationArray.map((course, index, array) =>
+let map = coursesAndDurationArray.map((course, index) =>
     ({id: index + 1, ...course}));
 console.log(map);
 // =========================
