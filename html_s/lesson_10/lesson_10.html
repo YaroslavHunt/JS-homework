@@ -13,6 +13,9 @@
             align-items: center;
             flex-direction: column;
         }
+        ul {
+            list-style-type: none;
+        }
         .addUser {
             height: 20vh;
             width: 40vw;
@@ -21,15 +24,44 @@
             justify-content: space-evenly;
             flex-direction: column;
         }
+        .usersBox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        #text {
+            background-color: #a1a1cc;
+            width: 40vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
     </style>
 </head>
 <body>
+
     <form action="" class="addUser" name="dataForm">
         <input id="name" type="text" name="username" placeholder="Enter your name">
         <input id="surname" type="text" name="surname" placeholder="Enter your surname">
         <input id="age" type="number" name="age" placeholder="Enter your age">
         <button id="btn">Create</button>
     </form>
-    <script src="../scripts/lesson_10.js"></script>
+    <div id="numberBox">
+        <span id="number">1</span>
+    </div>
+    <div class="usersBox">
+        <ul id="usersList"></ul>
+        <div id="buttons">
+            <button id="prev">prev</button>
+            <button id="next">next</button>
+        </div>
+    </div>
+    <div id="text">
+        <p>IF YOU PRESS I WILL DISAPPEAR</p>
+        <button id="hidden">push</button>
+    </div>
+    <script src="../../scripts/lesson_10.js"></script>
 </body>
 </html>
