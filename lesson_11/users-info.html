@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="user-info"></div>
+<script>
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    function showUser() {
+        const userId = getQueryParam('id');
+        const usersStorage = JSON.parse(localStorage.getItem('users'));
+        const user = usersStorage.find(user => user.id === parseInt(userId));
+
+        if (user) {
+            const userInfo = document.getElementById('user-info');
+            userInfo.innerHTML = `
+                <p>ID: ${user.id}</p>
+                         <p>Name: ${user.name}</p>
+                         <p>Username: ${user.username}</p>
+                         <p>Email: ${user.email}</p>
+                         <p>Address:</p>
+                         <ul>
+                             <li>Street: ${user.address.street}</li>
+                             <li>Suite: ${user.address.suite}</li>
+                             <li>City: ${user.address.city}</li>
+                             <li>Zipcode: ${user.address.zipcode}</li>
+                             <li>Geo: (${user.address.geo.lat}, ${user.address.geo.lng})</li>
+                         </ul>
+                         <p>Phone: ${user.phone}</p>
+                         <p>Website: ${user.website}</p>
+                         <p>Company:</p>
+                             <li>Name: ${user.company.name}</li>
+                         <ul>
+                             <li>Catch Phrase: ${user.company.catchPhrase}</li>
+                             <li>BS: ${user.company.bs}</li>
+                         </ul>
+            `;
+        }
+    }
+
+     showUser();
+</script>
+</body>
+</html>
