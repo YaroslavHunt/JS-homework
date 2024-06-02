@@ -6,7 +6,7 @@
 
 let baseUrl = 'http://jsonplaceholder.typicode.com';
 let getUsers = baseUrl + '/users';
-let matchArray = getUsers.match(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(:[0-9]+)?|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g);
+let matchArray = getUsers.match(/(?<!\\)\\(?![\[\]\\QEnrtaefvdwsDWSbAZzB1-9GX]|x\{[0-9a-f]{1,4}|\c[A-Z]|)/g);
 if (matchArray) {
     let usersUrl = new URL(getUsers);
     fetch(usersUrl)
@@ -23,5 +23,5 @@ if (matchArray) {
                 listItem.appendChild(link);
                 usersList.appendChild(listItem);
             });
-        })
+        });
 }
